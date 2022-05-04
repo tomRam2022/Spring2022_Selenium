@@ -4,6 +4,8 @@ package Helper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.security.PublicKey;
+
 public class Misc {
 
     private static WebDriver driver;
@@ -36,6 +38,15 @@ public class Misc {
         public static WebDriver getDriver() {
             return driver;
         }
+
+        public static double fahToCelTemp ( int fTemp ){
+            int temp = fTemp;
+            int fahToCelTemp = (int) ((fTemp - 32.0D) * 5.0D / 9.0D);
+
+            return fahToCelTemp;
+    }
+
+
 
 
 }
