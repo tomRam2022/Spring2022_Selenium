@@ -53,7 +53,7 @@ public class Test2_ {
             for (int j = 0; j < factVal.size() - 1; j++) {
                 result = factVal.get(j) * factVal.get(j + 1);
             }
-            System.out.println(result);
+            //System.out.println(result);
             return result;
         }
 
