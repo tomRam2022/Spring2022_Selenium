@@ -17,7 +17,7 @@ public class Test2_ {
      */
 
     @Test
-    public void verifyFeelLikeTempBtwLowHigh () {
+    public void verifyFeelLikeTempBtwLowHigh() {
         Misc.launchUrlOnNewWindow("https://darksky.net/");
 
         int feelsLiketemp = Integer.parseInt(Misc.getDriver().findElement(By.xpath("//span[@class='feels-like-text']")).getAttribute("innerHTML").replaceAll("\\D+", ""));
@@ -31,32 +31,23 @@ public class Test2_ {
         Assert.assertTrue(result, "Feel like trmp is not between low and high temp");
     }
 
-        /**
-         * Ques-1:
-         * Create a method to return factorial value of input-int-value
-         * points: 10
-         *  * eg:
-         *      * input -> 5
-         *      * returned value -> (5*4*3*2*1) = 120
-         *      *
-         */
+    /**
+     * Ques-1:
+     * Create a method to return factorial value of input-int-value
+     * points: 10
+     * * eg:
+     * * input -> 5
+     * * returned value -> (5*4*3*2*1) = 120
+     * *
+     */
 
-        public static int returnFactorialVal(int v) {
-            int result = 0;
-            int newVal = 0;
-            List<Integer> factVal = new ArrayList<>();
-            factVal.add(v);
-            for (int i = 1; i < v; i++) {
-                newVal = v - i;
-                factVal.add(newVal);
-            }
-            for (int j = 0; j < factVal.size() - 1; j++) {
-                result = factVal.get(j) * factVal.get(j + 1);
-            }
-            //System.out.println(result);
-            return result;
-        }
+    public static int returnFactorialVal(int v) {
+        int newVal = 1;
+        for (int i = 1; i <= v; i++) {
+            newVal *= i;
 
+        }return newVal;
+    }
         /**
          * Ques-3:
          * Create a method to return the common Strings values in two input-String-arrays
@@ -74,31 +65,40 @@ public class Test2_ {
          *
          */
 
-        public static List<String> commonString(String[] array1, String[] array2) {
+        public static List<String> commonString (String[]array1, String[]array2){
             List<String> duplicateVal = new ArrayList<>();
-            for (int i = 0 ; i < array1.length ; i++ )
-                for (int j = 0 ; j < array2.length ; j++)
+            for (int i = 0; i < array1.length; i++)
+                for (int j = 0; j < array2.length; j++)
                     if (array1[i].equalsIgnoreCase(array2[j])) {
                         duplicateVal.add(array1[i]);
                     }
 
-            return duplicateVal;
+        return duplicateVal;
         }
-/**
- * Ques-4:
- * Create a method to return missing smallest positive integer (greater than 0) from given int-array.
- * points: 40
- */
-    /*
-     *
-     * eg:
-     * 	input -> : {3, 5, 1, 4, 2, 7}
-     * 	returned value : 6
-     */
+    /**
+     * * Ques-4:
+    * Create a method to return missing smallest positive integer (greater than 0) from given int-array.
+    * points: 40
+    */
+        /*
+         *
+         * eg:
+         * 	input -> : {3, 5, 1, 4, 2, 7}
+         * 	returned value : 6
+         */
+        public static int missingPosInt (int[] numbers) {
+            //int[] nums = {3,1};
+            int n=numbers.length;
+            int sum=((n+1)*(n+2))/2;
+            for(int i=0;i<n;i++)
+                sum-=numbers[i];
+
+            return sum;
+        }
+
+        }
 
 
 
 
 
-
-}

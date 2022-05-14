@@ -9,8 +9,8 @@ public class testing {
 
 
     public static void main(String[] args) {
-        //Test2_ fact = new Test2_();
-        int facVal2 = Test2_.returnFactorialVal(5);
+
+        int facVal2 = Test2_.returnFactorialVal(4);
         System.out.println(facVal2);
 
         String[] arr1 = {"happY", "king", "peace", "living standard"};
@@ -19,30 +19,15 @@ public class testing {
         List<String> commonValues = Test2_.commonString(arr1, arr2);
 
         System.out.println(commonValues);
-// * 	input -> : {3, 5, 1, 4, 2, 7}
-//     * 	returned value : 6
 
-        int[] nums = {3,1};
+        int[] nums = {1,2,3,5,6,4};
+        int missingNum = Test2_.missingPosInt(nums);
+        System.out.println(missingNum);
 
-        //List<Integer> myList = new ArrayList<Integer>();
-        //for (int numms : nums) {
-          //  myList.add(numms);
-
-        //Collections.sort(myList);
-        //System.out.println(myList);
-        int n=nums.length;
-        int sum=((n+1)*(n+2))/2;
-        for(int i=0;i<n;i++)
-            sum-=nums[i];
-        System.out.println(sum);
-        }
+    }
 
 
-            }
-
-
-
-
+}
 
 
 
