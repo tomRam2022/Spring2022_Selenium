@@ -102,6 +102,7 @@ public class Homework3_TestCases1_2_3 {
             Assert.assertTrue(currentTabContainsEcoChurchChairs,"current tab does not contain Economy Church Chairs");
 
             Misc.quitWindows();
+
         }
 
 }
