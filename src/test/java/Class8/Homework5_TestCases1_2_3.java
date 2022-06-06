@@ -19,7 +19,7 @@ public class Homework5_TestCases1_2_3 {
     @Test
     public void verifyCurrentDateIsHighlightedTM () {
 
-        DarkSky.launchDark();
+        Misc.launchUrlOnNewWindow("https://darksky.net/");
 
         Misc.JavaScriptExecute("scrollBy(0,700)");
 
@@ -45,7 +45,7 @@ public class Homework5_TestCases1_2_3 {
      */
     @Test
     public void verifySameValTodaysDate () {
-        DarkSky.launchDark();
+        Misc.launchUrlOnNewWindow("https://darksky.net/");
 
         Misc.JavaScriptExecute("scrollBy(0,200)");
 
@@ -83,7 +83,7 @@ public class Homework5_TestCases1_2_3 {
     @Test
     public void verifyStuff () {
 
-        Facebook.launchFacebook();
+        //Facebook.launchFacebook();
         Misc.pause(2);
         System.out.println("parent ->" + Misc.getDriver().getWindowHandle());
         String parent = Misc.getDriver().getWindowHandle();
