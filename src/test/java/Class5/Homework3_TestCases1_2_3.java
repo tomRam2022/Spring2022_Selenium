@@ -1,9 +1,9 @@
 package Class5;
 
 import Helper.Misc;
+import Web.MyDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -20,7 +20,7 @@ public class Homework3_TestCases1_2_3 {
 
         @Test
         public void verifyCorrTempValDisplyd () {
-        Misc.launchUrlOnNewWindow("https://darksky.net/");
+            MyDriver.launchUrlOnNewWindow("https://darksky.net/");
 
         String  temp = Misc.getDriver().findElement(By.xpath("//span[@class='summary swap']")).getAttribute("innerHTML").replaceAll("\\D+","");
 
@@ -52,7 +52,7 @@ public class Homework3_TestCases1_2_3 {
         @Test
         public void verifyCurrentDateSelected () {
 
-        Misc.launchUrlOnNewWindow("https://facebook.com/");
+            MyDriver.launchUrlOnNewWindow("https://facebook.com/");
 
         Misc.getDriver().findElement(By.xpath("//a [@rel='async']")).click();
 
@@ -81,7 +81,7 @@ public class Homework3_TestCases1_2_3 {
         @Test
         public void verifyUserLandsCorrectPage () {
 
-            Misc.launchUrlOnNewWindow("https://classroomessentialsonline.com/");
+            MyDriver.launchUrlOnNewWindow("https://classroomessentialsonline.com/");
 
             Misc.pause(5);
 

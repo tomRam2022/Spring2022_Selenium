@@ -1,8 +1,7 @@
 package Class8;
 
-import Commands.DarkSky;
-import Commands.Facebook;
 import Helper.Misc;
+import Web.MyDriver;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,15 +18,14 @@ public class Homework5_TestCases1_2_3 {
     @Test
     public void verifyCurrentDateIsHighlightedTM () {
 
-        Misc.launchUrlOnNewWindow("https://darksky.net/");
+        MyDriver.launchUrlOnNewWindow("https://darksky.net/");
 
-        Misc.JavaScriptExecute("scrollBy(0,700)");
-
+        Misc.JavaScriptExecute("scrollBy(0,900)");
         Misc.pause(5);
 
-        Misc.getDriver().findElement(By.xpath("(//div[@class='buttonContainer'])//a[@class='button']")).click();
+        MyDriver.getDriver().findElement(By.xpath("(//div[@class='buttonContainer'])//a[@class='button']")).click();
 
-        String dayCurrentlySelected = Misc.getDriver().findElement(By.xpath("(//table[@class='pika-table'])//td[@class='is-today']")).getText();
+        String dayCurrentlySelected = MyDriver.getDriver().findElement(By.xpath("(//table[@class='pika-table'])//td[@class='is-today']")).getText();
 
         String currentDate = Misc.CurrentFormattedDateStlye("d");
 
@@ -37,7 +35,8 @@ public class Homework5_TestCases1_2_3 {
 
         Assert.assertEquals(dayCurrentlySelected,currentDate,"Current date not highlighted");
 
-        Misc.quitWindows();
+
+        //Misc.quitWindows();
     }
     /**
      * darksky.net
@@ -45,23 +44,22 @@ public class Homework5_TestCases1_2_3 {
      */
     @Test
     public void verifySameValTodaysDate () {
-        Misc.launchUrlOnNewWindow("https://darksky.net/");
+        MyDriver.launchUrlOnNewWindow("https://darksky.net/");
+        Misc.JavaScriptExecute("scrollBy(0,400)");
 
-        Misc.JavaScriptExecute("scrollBy(0,200)");
+        MyDriver.getDriver().findElement(By.xpath("(//span[@class='skycon'])[1]")).click();
 
-        Misc.getDriver().findElement(By.xpath("(//span[@class='skycon'])[1]")).click();
+        String todayMinTemp = MyDriver.getDriver().findElement(By.xpath("((//span[@class='tempRange'])[1])//span[@class='minTemp']")).getText().replaceAll("\\D+","");
 
-        String todayMinTemp = Misc.getDriver().findElement(By.xpath("((//span[@class='tempRange'])[1])//span[@class='minTemp']")).getText().replaceAll("\\D+","");
-
-        String todayMaxTemp = Misc.getDriver().findElement(By.xpath("((//span[@class='tempRange'])[1])//span[@class='maxTemp']")).getText().replaceAll("\\D+","");
+        String todayMaxTemp = MyDriver.getDriver().findElement(By.xpath("((//span[@class='tempRange'])[1])//span[@class='maxTemp']")).getText().replaceAll("\\D+","");
 
         System.out.println(todayMinTemp);
 
         System.out.println(todayMaxTemp);
 
-        String todaySwipMinTemp = Misc.getDriver().findElement(By.xpath("(//span[@class='highTemp swip']//span[@class='temp'])[1]")).getText().replaceAll("\\D+","");
+        String todaySwipMinTemp = MyDriver.getDriver().findElement(By.xpath("(//span[@class='highTemp swip']//span[@class='temp'])[1]")).getText().replaceAll("\\D+","");
 
-        String todaySwipMaxTemp = Misc.getDriver().findElement(By.xpath("(//span[@class='lowTemp swap']//span[@class='temp'])[1]")).getText().replaceAll("\\D+","");
+        String todaySwipMaxTemp = MyDriver.getDriver().findElement(By.xpath("(//span[@class='lowTemp swap']//span[@class='temp'])[1]")).getText().replaceAll("\\D+","");
 
         System.out.println(todaySwipMinTemp);
 
@@ -85,44 +83,44 @@ public class Homework5_TestCases1_2_3 {
 
         //Facebook.launchFacebook();
         Misc.pause(2);
-        System.out.println("parent ->" + Misc.getDriver().getWindowHandle());
-        String parent = Misc.getDriver().getWindowHandle();
+        System.out.println("parent ->" + MyDriver.getDriver().getWindowHandle());
+        String parent = MyDriver.getDriver().getWindowHandle();
 
-        Misc.getDriver().findElement(By.linkText("Facebook Pay")).click();
-        Misc.pause(2);
+        MyDriver.getDriver().findElement(By.linkText("Facebook Pay")).click();
+        //MyDriver.pause(2);
 
-        Misc.getDriver().findElement(By.linkText("Oculus")).click();
-        Misc.pause(2);
+        MyDriver.getDriver().findElement(By.linkText("Oculus")).click();
+        //MyDriver.pause(2);
 
-        Misc.getDriver().findElement(By.linkText("Instagram")).click();
-        Misc.pause(2);
+        MyDriver.getDriver().findElement(By.linkText("Instagram")).click();
+        //MyDriver.pause(2);
 
-        Misc.getDriver().findElement(By.linkText("Portal")).click();
-        Misc.pause(2);
+        MyDriver.getDriver().findElement(By.linkText("Portal")).click();
+        //MyDriver.pause(2);
 
-        Misc.getDriver().findElement(By.linkText("Bulletin")).click();
-        Misc.pause(2);
+        MyDriver.getDriver().findElement(By.linkText("Bulletin")).click();
+        //MyDriver.pause(2);
 
-        Set<String> winHandles = Misc.getDriver().getWindowHandles();
+        Set<String> winHandles = MyDriver.getDriver().getWindowHandles();
         System.out.println(winHandles);
 
         System.out.println("Istagram ->" + Misc.getWinHandle("Instagram",winHandles));
         String win2 = Misc.getWinHandle("Instagram",winHandles);
 
         Misc.switchWin(win2);
-        System.out.println(Misc.getDriver().getTitle());
+        System.out.println(MyDriver.getDriver().getTitle());
         Misc.pause(5);
-        System.out.println(Misc.getDriver().getWindowHandle());
+        System.out.println(MyDriver.getDriver().getWindowHandle());
         Misc.closeAllExept(win2,winHandles);
         Misc.pause(5);
-        winHandles = Misc.getDriver().getWindowHandles();
+        winHandles = MyDriver.getDriver().getWindowHandles();
         int numOfWinOpen = winHandles.size();
         System.out.println(numOfWinOpen);
         Misc.switchWin(win2);
-        String currWinTitle = Misc.getDriver().getTitle();
+        String currWinTitle = MyDriver.getDriver().getTitle();
         System.out.println(currWinTitle);
 
-        Boolean isEnabled = Misc.getDriver().findElement(By.xpath("(//button[@type='button'])[1]")).isEnabled();
+        Boolean isEnabled = MyDriver.getDriver().findElement(By.xpath("(//button[@type='button'])[1]")).isEnabled();
         System.out.println("log in button is enabled -> " + isEnabled);
 
         Assert.assertEquals(numOfWinOpen,1,"more than 1 window is open");

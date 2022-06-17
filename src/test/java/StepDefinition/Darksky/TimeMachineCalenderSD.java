@@ -1,7 +1,5 @@
 package StepDefinition.Darksky;
 
-import Commands.DarkSky;
-import Helper.Misc;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,11 +13,12 @@ public class TimeMachineCalenderSD {
 
     @Given("I am on darksky landing page")
     public void openDarksky() {
-       dsp.launchDark();
+        dsp.launchDark();
     }
     @When("I scroll down the landing page")
     public void scrollDown() {
         dsp.scrollDown();
+        Misc.pause(5);
     }
     @And("I click on time machine button")
     public void clickONTimeMachineButton() {
