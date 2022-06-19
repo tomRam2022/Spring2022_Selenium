@@ -1,6 +1,6 @@
 package Test_2;
 
-import Helper.Misc;
+import Web.MyDriver;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,11 +18,11 @@ public class Test2_ {
 
     @Test
     public void verifyFeelLikeTempBtwLowHigh() {
-        Misc.launchUrlOnNewWindow("https://darksky.net/");
+        MyDriver.launchUrlOnNewWindow("https://darksky.net/");
 
-        int feelsLiketemp = Integer.parseInt(Misc.getDriver().findElement(By.xpath("//span[@class='feels-like-text']")).getAttribute("innerHTML").replaceAll("\\D+", ""));
-        int lowTemp = Integer.parseInt(Misc.getDriver().findElement(By.xpath("//span[@class='low-temp-text']")).getAttribute("innerHTML").replaceAll("\\D+", ""));
-        int highTemp = Integer.parseInt(Misc.getDriver().findElement(By.xpath("//span[@class='high-temp-text']")).getAttribute("innerHTML").replaceAll("\\D+", ""));
+        int feelsLiketemp = Integer.parseInt(MyDriver.getDriver().findElement(By.xpath("//span[@class='feels-like-text']")).getAttribute("innerHTML").replaceAll("\\D+", ""));
+        int lowTemp = Integer.parseInt(MyDriver.getDriver().findElement(By.xpath("//span[@class='low-temp-text']")).getAttribute("innerHTML").replaceAll("\\D+", ""));
+        int highTemp = Integer.parseInt(MyDriver.getDriver().findElement(By.xpath("//span[@class='high-temp-text']")).getAttribute("innerHTML").replaceAll("\\D+", ""));
         boolean result = false;
         if (feelsLiketemp >= lowTemp && feelsLiketemp <= highTemp) {
             result = true;

@@ -1,8 +1,7 @@
 package Class4;
 
-import Helper.Misc;
+import Web.MyDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,52 +21,52 @@ public class Homework2_TestCase1 {
      */
     @Test
     public void VerifyKeepMeSingedInIsNotSelected () {
-        Misc.launchUrlOnNewWindow("https://facebook.com/");
+        MyDriver.launchUrlOnNewWindow("https://facebook.com/");
 
-        Misc.getDriver().findElement(By.linkText("Messenger")).click();
+        MyDriver.getDriver().findElement(By.linkText("Messenger")).click();
 
-        Misc.pause(5);
+        //MyDriver.pause(5);
 
        // Misc.getDriver().findElement(By.xpath("//label[@class='uiInputLabelInput']")).isSelected();
-        boolean keepMeSignedInCheckBoxNotSelected =  Misc.getDriver().findElement(By.xpath("//label[@class='uiInputLabelInput']")).isSelected();
+        boolean keepMeSignedInCheckBoxNotSelected =  MyDriver.getDriver().findElement(By.xpath("//label[@class='uiInputLabelInput']")).isSelected();
         Assert.assertFalse(keepMeSignedInCheckBoxNotSelected, "keep me signed in is selected");
 
-        Misc.quitWindows();
+        MyDriver.quitWindows();
 
     }
     @Test
     public void VerifyIncorrectEmailOrPhoneNumberIsDisplyed () {
-        Misc.launchUrlOnNewWindow("https://facebook.com/");
+        MyDriver.launchUrlOnNewWindow("https://facebook.com/");
 
-        Misc.getDriver().findElement(By.linkText("Messenger")).click();
-        Misc.pause(5);
+        MyDriver.getDriver().findElement(By.linkText("Messenger")).click();
+        //MyDriver.pause(5);
 
-        Misc.getDriver().findElement(By.xpath("//button[@id='loginbutton']")).click();
-        Misc.pause(5);
+        MyDriver.getDriver().findElement(By.xpath("//button[@id='loginbutton']")).click();
+        //MyDriver.pause(5);
 
         //Misc.getDriver().findElement(By.xpath("//div[text()='Incorrect email or phone number']")).isDisplayed();
-        boolean incorrectEmailOrPhoneNumberIsDisplayed =  Misc.getDriver().findElement(By.xpath("//div[text()='Incorrect email or phone number']")).isDisplayed();
+        boolean incorrectEmailOrPhoneNumberIsDisplayed =  MyDriver.getDriver().findElement(By.xpath("//div[text()='Incorrect email or phone number']")).isDisplayed();
         Assert.assertTrue(incorrectEmailOrPhoneNumberIsDisplayed, "incorrect email or phone number message not displayed");
 
-        Misc.quitWindows();
+        MyDriver.quitWindows();
     }
     @Test
     public void VerifyContinueBtnIsEnabled () {
-        Misc.launchUrlOnNewWindow("https://facebook.com/");
+        MyDriver.launchUrlOnNewWindow("https://facebook.com");
 
-        Misc.getDriver().findElement(By.linkText("Messenger")).click();
+        MyDriver.getDriver().findElement(By.linkText("Messenger")).click();
 
-        Misc.pause(5);
+        //MyDriver.pause(5);
 
-        Misc.getDriver().findElement(By.xpath("//button[@id='loginbutton']")).click();
+        MyDriver.getDriver().findElement(By.xpath("//button[@id='loginbutton']")).click();
 
-        Misc.pause(5);
+        //MyDriver.pause(5);
 
         //Misc.getDriver().findElement(By.xpath("//button[@name='login']")).isEnabled();
-        boolean continueBtnIsEnabled = Misc.getDriver().findElement(By.xpath("//button[@name='login']")).isEnabled();
+        boolean continueBtnIsEnabled = MyDriver.getDriver().findElement(By.xpath("//button[@name='login']")).isEnabled();
         Assert.assertTrue(continueBtnIsEnabled);
 
-        Misc.quitWindows();
+        MyDriver.quitWindows();
 
     }
 
