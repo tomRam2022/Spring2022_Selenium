@@ -1,18 +1,17 @@
 package Pages.Hotels;
 
 import Pages.Commands;
+import Web.MyDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
 public class LandingPage extends Commands {
-
-    //
+    JavascriptExecutor js = (JavascriptExecutor) MyDriver.getDriver();
     By checkInDateBoxLocator = By.id("d1-btn");
     By checkInDisabledDatesLocator = By.xpath("//table[@class='uitk-date-picker-weeks']//button[@disabled]");
-
-
     By june2022DatesLocator = By.xpath("//h2[text()='June 2022']/following-sibling::table//button[@data-day]");
     /*
 
@@ -22,16 +21,12 @@ public class LandingPage extends Commands {
      */
     String monthDates_1 = "//h2[text()='";
     String monthDates_2 = "']/following-sibling::table//button[@data-day]";
-
     By calendarHeading = By.xpath("(//div[@data-stid='date-picker-month'])[1]//h2");
     By nextMonthArrow = By.xpath("(//button[@data-stid='date-picker-paging'])[2]");
-
-
     By destinationInputBoxLocator = By.xpath("//button[@aria-label='Going to']");
     By destinationInputLocator = By.id("location-field-destination");
     By destinationSuggestions = By.xpath("//div[@class='uitk-typeahead-results']//div[contains(@class,'truncat') and not(contains(@class,'uitk'))]");
-
-
+    By passwordBox = By.xpath("//input[@type='password']");
     public void clickCheckInBox() {
         clickIt(checkInDateBoxLocator);
     }
@@ -68,12 +63,17 @@ public class LandingPage extends Commands {
         selectDateInCalendar(allDatesLocator, dateValue);
     }
 
-
     public void selectDateFromAnyMonth(String dateMonthYear) {
         String[] dateValues = dateMonthYear.split(" ");
         goToMonth(dateValues[1] + " " + dateValues[2]);
         By allDatesLocator = By.xpath(monthDates_1 + dateValues[1] + " " + dateValues[2] + monthDates_2);
         selectDateInCalendar(allDatesLocator, dateValues[0]);
+    }
+
+    public void enterPassWord (String data) {
+        type(passwordBox,data);
+
+
     }
 
 

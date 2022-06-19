@@ -52,7 +52,7 @@ public class Homework2_TestCase1 {
     }
     @Test
     public void VerifyContinueBtnIsEnabled () {
-        MyDriver.launchUrlOnNewWindow("https://facebook.com/");
+        MyDriver.launchUrlOnNewWindow("https://facebook.com");
 
         MyDriver.getDriver().findElement(By.linkText("Messenger")).click();
 

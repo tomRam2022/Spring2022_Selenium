@@ -1,6 +1,7 @@
 package Helper;
 
 import Web.MyDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
@@ -98,5 +99,11 @@ public class Misc {
             }
         }
         return win;
+    }
+
+    public static void scrollToElementView() {
+        By howCanWeImproveOurSite = By.xpath("//span[text()='Tell us how we can improve our site']");
+        JavascriptExecutor js = (JavascriptExecutor) MyDriver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true);", MyDriver.getDriver().findElement(howCanWeImproveOurSite));
     }
 }

@@ -1,4 +1,5 @@
-Feature: Hotels TermsAndPrivacy
+Feature: Hotels SignUpTermsAndCond
+
   Scenario: Verify Terms and Conditions link open correct page on new tab
     Given I am on Hotels landing page
     Then I click on the sign in button

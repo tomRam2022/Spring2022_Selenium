@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Commands {
+
     Alert myAlert;
 
     // Create a local method to find WebElement
@@ -89,13 +90,13 @@ public class Commands {
     // Create custom method to scroll
     public WebElement scrollToElement(By locator) {
         WebElement element = null;
-        for (int i=0 ; i <= 15 ; i++) {
+        for (int i = 0; i <= 15; i++) {
             try {
                 element = findWebElement(locator);
                 break;
             } catch (ElementClickInterceptedException | NoSuchElementException e) {
                 //scroll by 100
-                JavascriptExecutor js =  (JavascriptExecutor) MyDriver.getDriver();
+                JavascriptExecutor js = (JavascriptExecutor) MyDriver.getDriver();
                 js.executeScript("scrollBy(0,100)");
             }
         }
@@ -132,7 +133,7 @@ public class Commands {
     public void selectFromSuggestions(By locator, String userSuggestion) {
         List<WebElement> allSuggestions = MyDriver.getDriver().findElements(locator);
         for (WebElement suggestion : allSuggestions) {
-            if(suggestion.getText().equalsIgnoreCase(userSuggestion)) {
+            if (suggestion.getText().equalsIgnoreCase(userSuggestion)) {
                 suggestion.click();
                 break;
             }
@@ -146,51 +147,65 @@ public class Commands {
     }
 
     public void clickPositiveActionBtnOnAlert() {
-        if(myAlert == null) {
+        if (myAlert == null) {
             switchToAlert();
         }
         myAlert.accept();
     }
 
     public void clickNegativeActionBtnOnAlert() {
-        if(myAlert == null) {
+        if (myAlert == null) {
             switchToAlert();
         }
         myAlert.dismiss();
     }
 
     public String getTextFromAlert() {
-        if(myAlert == null) {
+        if (myAlert == null) {
             switchToAlert();
         }
         return myAlert.getText();
     }
 
     public void typeInAlert(String data) {
-        if(myAlert == null) {
+        if (myAlert == null) {
             switchToAlert();
         }
         myAlert.sendKeys(data);
     }
 
     // Custom method/function to switch on Frame using iframe-id
-    public void switchToFrame (String frameId) {
+    public void switchToFrame(String frameId) {
         MyDriver.getDriver().switchTo().frame(frameId);
     }
 
     // Custom method/function to switch on Frame using iframe-element
-    public void switchToFrame (By locator) {
+    public void switchToFrame(By locator) {
         WebElement myFrame = findWebElement(locator);
         MyDriver.getDriver().switchTo().frame(myFrame);
     }
 
     // Custom method/function to switch on Frame using iframe-index
-    public void switchToFrame (int frameIndex) {
+    public void switchToFrame(int frameIndex) {
         MyDriver.getDriver().switchTo().frame(frameIndex);
     }
 
-    public void switchToMainWindowFromFrame () {
+    public void switchToMainWindowFromFrame() {
         MyDriver.getDriver().switchTo().defaultContent();
     }
+
+    public void switchToCurrentWindow() {
+        for (String winHandle : MyDriver.getDriver().getWindowHandles()) {
+            MyDriver.getDriver().switchTo().window(winHandle);
+        }
+    }
+
+    public void launchHotelsPage() {
+        MyDriver.launchUrlOnNewWindow("https://hotels.com/");
+        MyDriver.getDriver().manage().window().fullscreen();
+        String parentWindow = MyDriver.getDriver().getWindowHandle();
+        System.out.println("parentWindow = " + parentWindow);
+    }
+
 
 }

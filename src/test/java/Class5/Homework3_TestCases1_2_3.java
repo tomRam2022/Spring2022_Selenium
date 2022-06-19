@@ -22,25 +22,25 @@ public class Homework3_TestCases1_2_3 {
         public void verifyCorrTempValDisplyd () {
             MyDriver.launchUrlOnNewWindow("https://darksky.net/");
 
-        String  temp = Misc.getDriver().findElement(By.xpath("//span[@class='summary swap']")).getAttribute("innerHTML").replaceAll("\\D+","");
+        String  temp = MyDriver.getDriver().findElement(By.xpath("//span[@class='summary swap']")).getAttribute("innerHTML").replaceAll("\\D+","");
 
         int tempF = Integer.valueOf(temp);
 
         int tempFToC = (int) Misc.fahToCelTemp(tempF);
 
-        Misc.getDriver().findElement(By.xpath("(//div[@class='options']//div)[1]")).click();
+            MyDriver.getDriver().findElement(By.xpath("(//div[@class='options']//div)[1]")).click();
 
         Misc.pause(5);
 
-        Misc.getDriver().findElement(By.xpath("((//div[contains(@class,'selectric-open')])//li)[4]")).click();
+            MyDriver.getDriver().findElement(By.xpath("((//div[contains(@class,'selectric-open')])//li)[4]")).click();
 
-        String  temp2 = Misc.getDriver().findElement(By.xpath("//span[@class='summary swap']")).getAttribute("innerHTML").replaceAll("\\D+","");
+        String  temp2 = MyDriver.getDriver().findElement(By.xpath("//span[@class='summary swap']")).getAttribute("innerHTML").replaceAll("\\D+","");
 
         int tempC = Integer.valueOf(temp2);
 
         Assert.assertEquals(tempC,tempFToC,"fahrenheit temp to celsius is incorrect");
 
-        Misc.quitWindows();
+            MyDriver.quitWindows();
 
 }
 
@@ -54,13 +54,13 @@ public class Homework3_TestCases1_2_3 {
 
             MyDriver.launchUrlOnNewWindow("https://facebook.com/");
 
-        Misc.getDriver().findElement(By.xpath("//a [@rel='async']")).click();
+            MyDriver.getDriver().findElement(By.xpath("//a [@rel='async']")).click();
 
         Misc.pause(5);
 
-        String monthCurrentlySelected = Misc.getDriver().findElement(By.xpath("(//select[@name='birthday_month'])//option[@selected=\"1\"]")).getAttribute("innerHTML");
-        String dayCurrentlySelected = Misc.getDriver().findElement(By.xpath("(//select[@name='birthday_day'])//option[@selected=\"1\"]")).getAttribute("innerHTML");
-        String yearCurrentlySelected = Misc.getDriver().findElement(By.xpath("(//select[@name='birthday_year'])//option[@selected=\"1\"]")).getAttribute("innerHTML");
+        String monthCurrentlySelected = MyDriver.getDriver().findElement(By.xpath("(//select[@name='birthday_month'])//option[@selected=\"1\"]")).getAttribute("innerHTML");
+        String dayCurrentlySelected = MyDriver.getDriver().findElement(By.xpath("(//select[@name='birthday_day'])//option[@selected=\"1\"]")).getAttribute("innerHTML");
+        String yearCurrentlySelected = MyDriver.getDriver().findElement(By.xpath("(//select[@name='birthday_year'])//option[@selected=\"1\"]")).getAttribute("innerHTML");
         String dateCurrentlySelected = monthCurrentlySelected + " " + dayCurrentlySelected + " " + yearCurrentlySelected;
                 System.out.println(dateCurrentlySelected);
 
@@ -71,7 +71,7 @@ public class Homework3_TestCases1_2_3 {
 
                 Assert.assertEquals(dateCurrentlySelected,formattedDate,"Current date not displayed correctly");
 
-                Misc.quitWindows();
+            MyDriver.quitWindows();
 }
         /**
          * TC-3: https://classroomessentialsonline.com/
@@ -85,23 +85,23 @@ public class Homework3_TestCases1_2_3 {
 
             Misc.pause(5);
 
-            WebElement churcChairs = Misc.getDriver().findElement(By.xpath("(//li[@class='navPages-item'])[1]"));
+            WebElement churcChairs = MyDriver.getDriver().findElement(By.xpath("(//li[@class='navPages-item'])[1]"));
 
-            Actions action = new Actions(Misc.getDriver());
+            Actions action = new Actions(MyDriver.getDriver());
 
             action.moveToElement(churcChairs).perform();
 
             Misc.pause(5);
 
-            String tabSelected = Misc.getDriver().findElement(By.xpath("//li[contains(@class,'item-child')]//a[text()='Economy Church Chairs']")).getAttribute("innerHTML");
+            String tabSelected = MyDriver.getDriver().findElement(By.xpath("//li[contains(@class,'item-child')]//a[text()='Economy Church Chairs']")).getAttribute("innerHTML");
 
-            Misc.getDriver().findElement(By.xpath("//li[contains(@class,'item-child')]//a[text()='Economy Church Chairs']")).click();
+            MyDriver.getDriver().findElement(By.xpath("//li[contains(@class,'item-child')]//a[text()='Economy Church Chairs']")).click();
 
-            boolean currentTabContainsEcoChurchChairs = Misc.getDriver().getTitle().contains(tabSelected);
+            boolean currentTabContainsEcoChurchChairs = MyDriver.getDriver().getTitle().contains(tabSelected);
 
             Assert.assertTrue(currentTabContainsEcoChurchChairs,"current tab does not contain Economy Church Chairs");
 
-            Misc.quitWindows();
+            MyDriver.quitWindows();
 
         }
 
