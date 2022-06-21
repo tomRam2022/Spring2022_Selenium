@@ -21,7 +21,7 @@ public class SignInSD {
     public void enterEmail() {
         signIn.emailBoxInput();
     }
-    @Given("I enter abcd as password")
+    @Given("I enter .+ as password")
     public void enterPassword() {
         signIn.passwordInput();
     }

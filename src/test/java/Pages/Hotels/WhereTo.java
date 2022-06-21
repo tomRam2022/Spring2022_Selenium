@@ -87,8 +87,7 @@ public class WhereTo extends Commands {
         Assert.assertTrue(textIsDisplayed, "text is not displayed");
     }
 
-    public void verifyShareFeedbackBtnDisplayed() {
-        //MyDriver.pause(5);
+    public void verifyShareFeedbackBtnDisplayed() {;
         boolean shareFeedbackBtnDisplayed = MyDriver.getDriver().findElement(shareFeedbackBtn).isDisplayed();
         Assert.assertTrue(shareFeedbackBtnDisplayed, "Shared feedback button not displayed");
     }
